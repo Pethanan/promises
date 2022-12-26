@@ -67,4 +67,4 @@ const prom = Promise.all([createPost({title: "Post 3", body: "post 1 body", crea
 }).catch(err=> {console.log(err)});
 
           
-deletePost().then(deletedEl => {console.log(deletedEl); displayPost();});
+deletePost().then(deletedEl => {console.log(posts); displayPost();});
