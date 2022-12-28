@@ -11,58 +11,22 @@ const displayPost = () =>
   
 }
 
-function createPost(post)
+async function createPost(post)
 {
-return new Promise((resolve, reject)=>{
-  setTimeout(()=> {
-posts.push(post);
-let error = false;
-    if(!error)
-      resolve();
-    else
-      reject("Error: something went wrong");
-}, 0);
-})
-}
-          
-
-function deletePost()
-{
-  return new Promise((resolve, reject)=>
-   {
-    setTimeout(() =>     {
-      if(posts.length>0) 
-        {
-          let deletedEl = posts.pop();
-          resolve(deletedEl);
-        }
-      else
-        {
-          reject("arr is empty");
-        }
-   
-    }, 1000)
-   
-  });
-}
-
-
-
-createPost({title: "post 3", body: "post 3", createdAt: new Date()}, displayPost).then(()=>
-                                                                                      
-{
-  displayPost(); 
-  deletePost().then((deletedEl)=> { console.log(deletedEl)
-      displayPost(); 
-deletePost().then((deletedEl) => { console.log(deletedEl)
+  await posts.push(post);
   displayPost();
-  deletePost().then((deletedEl)=>{ console.log(deletedEl); displayPost(); 
-                        deletePost().then(()=>{}).catch((err)=>{console.log(err)
-});
-}).catch((err)=>{console.log(err)})
-}).catch((err)=>{console.log(err)})
-}).catch((err)=>{console.log(err)})
-});
+}
+     
+
+async function deletePost()
+{
+  
+let deletedEl = await posts.pop();
+  displayPost();
+    
+}
 
 
-          
+
+createPost({title: "post 3", body: "post 3", createdAt: new Date().getTime()});
+deletePost();
